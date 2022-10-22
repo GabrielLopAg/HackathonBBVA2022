@@ -15,4 +15,4 @@ app = FastAPI(
 )
 
 from endpoints import api_router
-app.include_router(api_router, prefix="/api")
+app.include_router(api_router, prefix="")
