@@ -26,4 +26,4 @@ app.add_middleware(
 )
 
 from endpoints import api_router
-app.include_router(api_router, prefix="")
+app.include_router(api_router, prefix="api/v1")
