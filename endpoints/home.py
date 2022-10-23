@@ -10,10 +10,10 @@ router = APIRouter()
     tags=["Home"],
     summary="Hola mundo de la aplicación",
     )
-def hello_world():
+def Home():
     """
     # Hola mundo de la aplicación
-    Este endpoint muestra un mensaje de bienvenida.
+    Este endpoint muestra un mensaje.
 
     Parámetros:
     - Request body:
@@ -27,4 +27,4 @@ def hello_world():
         - Ninguno
     Regresa un JSON con el mensaje de bienvenida.
     """
-    return {"message": "Hello World"}
+    return {"message": "Bye World"}
