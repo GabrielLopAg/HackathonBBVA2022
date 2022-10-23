@@ -32,5 +32,19 @@ def scrap_pyme_org(name='us stick', city='CDMX'):
         return [c for c in soup.find('article', class_='pyme').div.div.div.div.div.p.children][3].string
     else:
         return ['No data']
+
+def scrap_maps(address='REGINA	135	ACCE A	CENTRO #AREA 9#	CUAUHTEMOC	6090'):
+    # r = requests.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.830216,2.806147&rankby=distance&name=franprix&key=AIzaSyD-j5OeJ70wvb_Di1thGZR1cMc83NTRXmM')
+    r = requests.get('https://maps.googleapis.com/maps/api/geocode/json',params={
+        'address': address,
+        'key': 'AIzaSyD-j5OeJ70wvb_Di1thGZR1cMc83NTRXmM'
+    })
+    place_id = r.json()['results'][0]['place_id']
+    r = requests.get('https://maps.googleapis.com/maps/api/place/details/json',params={
+        'place_id': place_id,
+        'key': 'AIzaSyD-j5OeJ70wvb_Di1thGZR1cMc83NTRXmM'
+    })
+    revs =  [{'text':a['text'], 'time': a['time']} for a in r.json()['result']['reviews']]
+    return revs
     
-scrap_inegi()
+print(scrap_maps())
