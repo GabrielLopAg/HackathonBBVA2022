@@ -11,17 +11,21 @@ def scrap_inegi(name='us stick'):
     else:
         return ['No data']
 
+
 def scrap_pyme_org(name='us stick', city='CDMX'):
     cities = {
         'CDMX': 'Ciudad-de-México',
         'Estado de Mexico': 'Estado-de-México'
     }
-    r = requests.get(f'https://pymes.org.mx/entidad/{cities[city]}.html',params={
+    if city == 'Chiapas':
+        pass
+    else:
+        r = requests.get(f'https://pymes.org.mx/entidad/{cities[city]}.html',params={
         "Pyme[nombre]":name,
         'Pyme_page': 1
         })
-    soup = BeautifulSoup(r.text, 'lxml')
-    data = soup.find('a', itemprop='name')
+        soup = BeautifulSoup(r.text, 'lxml')
+        data = soup.find('a', itemprop='name')
     # if data:
     #     cp = data[-1]
     #     muni = data[-2]
@@ -32,6 +36,7 @@ def scrap_pyme_org(name='us stick', city='CDMX'):
         return [c for c in soup.find('article', class_='pyme').div.div.div.div.div.p.children][3].string
     else:
         return ['No data']
+
 
 def scrap_maps(address='REGINA	135	ACCE A	CENTRO #AREA 9#	CUAUHTEMOC	6090'):
     # r = requests.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.830216,2.806147&rankby=distance&name=franprix&key=AIzaSyD-j5OeJ70wvb_Di1thGZR1cMc83NTRXmM')
@@ -46,7 +51,9 @@ def scrap_maps(address='REGINA	135	ACCE A	CENTRO #AREA 9#	CUAUHTEMOC	6090'):
     })
     if r.status_code==200 and 'reviews' in r.json()['result']:
         revs =  [{'text':a['text'], 'time': a['time']} for a in r.json()['result']['reviews']]
+        print(revs)
         return revs
     else:
         return ['No data']
-    
+
+# scrap_maps()
