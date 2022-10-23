@@ -20,6 +20,7 @@ def Home():
     """
     return {"message": "Bye World"}
 
+
 @router.post(
     path="/upload",
     status_code=200,
@@ -41,6 +42,7 @@ def upload(file: UploadFile = File(...)):
         
     - Request cookie:
         - Ninguno
+
     Regresa un JSON con los datos agregados.
     """
     csvReader = csv.DictReader(codecs.iterdecode(file.file, 'utf-8'))
