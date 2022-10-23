@@ -30,7 +30,7 @@ Como resultado del proceso, la entidad financiera podrá captar pro-activamente 
 
 ![image](https://user-images.githubusercontent.com/92193001/197394699-9c3ce066-d241-406e-8b5f-acd1d9cb1d8e.png)
 ![image](https://user-images.githubusercontent.com/92193001/197394718-190d04be-708e-4b53-a84e-f536335d9e2e.png)
-## Diagrama de recursos de Azure
+## Diagrama de recursos de AWS
 ![image](https://user-images.githubusercontent.com/92193001/197394789-61d699c9-cb86-4e33-a0bd-d6f0b6f59b7f.png)
 
 URL de la página: https://main.d36jbm36nqcshi.amplifyapp.com/
