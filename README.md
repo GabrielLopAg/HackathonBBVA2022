@@ -33,6 +33,6 @@ Como resultado del proceso, la entidad financiera podrá captar pro-activamente 
 ## Diagrama de recursos de Azure
 ![image](https://user-images.githubusercontent.com/92193001/197394789-61d699c9-cb86-4e33-a0bd-d6f0b6f59b7f.png)
 
-# Correr la aplicación 💻
-### npm install
-### npm start
+URL de la página: https://main.d36jbm36nqcshi.amplifyapp.com/
+
+URL de la API: https://doooxtxfjc.execute-api.us-east-2.amazonaws.com/dev/
