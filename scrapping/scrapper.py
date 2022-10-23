@@ -47,4 +47,3 @@ def scrap_maps(address='REGINA	135	ACCE A	CENTRO #AREA 9#	CUAUHTEMOC	6090'):
     revs =  [{'text':a['text'], 'time': a['time']} for a in r.json()['result']['reviews']]
     return revs
     
-print(scrap_maps())
