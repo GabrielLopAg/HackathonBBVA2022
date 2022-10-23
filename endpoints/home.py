@@ -1,4 +1,5 @@
 from fastapi import APIRouter, File, UploadFile
+from scrapping.scrapper import scrap_inegi,scrap_maps,scrap_pyme_org
 import csv
 import codecs
 
@@ -61,4 +62,10 @@ def upload(file: UploadFile = File(...)):
         data[key] = rows  
     
     file.file.close()
+    for datum in data:
+        data[datum].update({'Estrato':scrap_inegi(data[datum]['NombComp'][:-10])[0]})
+        data[datum].update({'Registro':scrap_pyme_org(data[datum]['NombComp'][:-10], data[datum]['Estado'])})
+        data[datum].update({'Reiews':scrap_maps(data[datum]['Direccion1']+
+            data[datum]['Direccion2']+data[datum]['Direccion3']+data[datum]['Colonia']+data[datum]['CP'])})
+
     return data

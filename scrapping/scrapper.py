@@ -44,6 +44,9 @@ def scrap_maps(address='REGINA	135	ACCE A	CENTRO #AREA 9#	CUAUHTEMOC	6090'):
         'place_id': place_id,
         'key': 'AIzaSyD-j5OeJ70wvb_Di1thGZR1cMc83NTRXmM'
     })
-    revs =  [{'text':a['text'], 'time': a['time']} for a in r.json()['result']['reviews']]
-    return revs
+    if r.status_code==200 and 'reviews' in r.json()['result']:
+        revs =  [{'text':a['text'], 'time': a['time']} for a in r.json()['result']['reviews']]
+        return revs
+    else:
+        return ['No data']
     
